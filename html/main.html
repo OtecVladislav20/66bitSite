@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="flex">
+        <a href="#" class="header-logo">
+            <img src="../img/Логотип 66бит 1.svg" alt="66bit" class="icon-logo">
+        </a>
+        <div class="header-info flex">
+            <ul class="header__list list-reset flex">
+                <li class="header__item">
+                    <p class="header-nav__phone">+7 343 290 84 76</p>
+                </li>
+                <li class="header__item">
+                    <p class="header-nav__email">info@66bit.ru</p>
+                </li>
+            </ul>
+            <button class="header__button-darkmode button-reset"></button>
+        </div>
+    </header>
+    <main>
+        <section class="hierarchy flex">
+            <ul class="hierarchy__list list-reset flex">
+                <li class="hierarchy__item"><a href="#">Главная</a></li>
+                <li class="hierarchy__item"><img src="../img/Arrow.svg" alt="Arrow"></li>
+                <li class="hierarchy__item"><a href="#">Список сотрудников</a></li>
+                <li class="hierarchy__item"><img src="../img/Arrow.svg" alt="Arrow"></li>
+                <li class="hierarchy__item"><a href="#">Дмитриев Игорь Степанович</a></li>
+            </ul>
+        </section>
+        <section class="search">
+            <h2>Список сотрудников</h2>
+            <input class="search__input" type="text" placeholder="Поиск">
+        </section>
+        <section class="chosen-filter flex">
+            <h3 class="chosen-filter__title">Выбранные фильтры:</h3>
+            <ul class="list-reset flex">
+                <li class="chosen-filter__item flex">
+                    <button class="chosen-filter__item__button button-reset"><img src="../img/X.svg" alt="x"></button>
+                    <p>fullstack</p>
+                </li>
+                <li class="chosen-filter__item flex">
+                    <button class="chosen-filter__item__button button-reset"><img src="../img/X.svg" alt="x"></button>
+                    <p>fullstack</p>
+                </li>
+            </ul>
+            <button class="chosen-filter__button button-reset">Найти</button>
+        </section>
+        <section class="data-personal">
+            <ul class="data-personal__list list-reset flex">
+                <li>ФИО</li>
+                <li>Должность</li>
+                <li>Телефон</li>
+                <li>Дата рождения</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

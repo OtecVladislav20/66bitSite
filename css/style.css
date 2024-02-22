@@ -1,0 +1,136 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+} 
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+p {
+    margin: 0px;
+}
+
+image {
+    max-width: 100%;
+}
+
+body {
+    max-width: 1920px;
+    min-width: 320px;
+    font-family: "Montserrat", sans-serif;
+}
+
+header {
+    min-height: 90px;
+    padding: 0px 180px 0px 180px;
+    align-items: center;
+    box-shadow: 0px 5px 10px #3971A440;
+}
+
+.flex {
+    display: flex;
+}
+
+.list-reset {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.button-reset {
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.header__list {
+    align-items: center;
+    margin-right: 48px;
+}
+
+.header__item:not(:last-child) {
+    margin-right: 64px;
+}
+
+.header-info {
+    align-items: center;
+}
+
+.header__button-darkmode {
+    min-width: 55px;
+    height: 26px;
+    background-color: #155DA4;
+    border-radius: 30px;
+    box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);
+}
+
+.header-info {
+    margin-left: auto;
+}
+
+.hierarchy {
+    min-height: 78px;
+    align-items: center;
+    padding: 0px 180px 0px 180px;
+}
+
+.hierarchy__item {
+    margin-right: 16px;
+}
+
+.search {
+    padding: 0px 180px 28px 180px;
+}
+
+.search__input {
+    width: 100%;
+    min-height: 43px;
+    padding-left: 10px;
+}
+
+.chosen-filter {
+    align-items: center;
+    padding: 0px 180px 0px 180px;
+    background-color: #F2F2F2;
+    min-height: 72px;
+}
+
+.chosen-filter__item {
+    margin-right: 24px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+}
+
+.chosen-filter__title {
+    margin-right: 40px;
+}
+
+.chosen-filter__item__button {
+    margin-right: 10px;
+}
+
+.chosen-filter__button {
+    padding: 12px 48px;
+    border-radius: 8px;
+    background-color: #155DA4;
+    color: #FFFFFF;
+    margin-left: auto;
+}
+
+.data-personal {
+    padding: 32px 180px 32px 180px;
+}
+
+.data-personal__list {
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
