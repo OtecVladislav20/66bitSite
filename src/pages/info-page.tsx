@@ -1,4 +1,4 @@
-import { Toggle } from '../components/toggle';
+import { Toggle } from '../components/toggle/toggle';
 
 export function InfoPage() {
   return (

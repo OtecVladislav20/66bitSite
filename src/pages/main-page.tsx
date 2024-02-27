@@ -1,5 +1,5 @@
-import { PersonalList } from '../components/personal-list';
-import { Toggle } from '../components/toggle';
+import { PersonalList } from '../components/personal-list/personal-list';
+import { Toggle } from '../components/toggle/toggle';
 import '../style.css';
 
 

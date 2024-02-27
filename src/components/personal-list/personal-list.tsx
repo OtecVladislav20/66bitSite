@@ -1,4 +1,4 @@
-import { PersonalItem } from './personal-item';
+import { PersonalItem } from '../personal-item/personal-item';
 
 export function PersonalList(): JSX.Element {
   return (
