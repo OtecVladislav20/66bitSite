@@ -6,6 +6,10 @@ import { store } from './store';
 import HistoryRouter from './components/history-router/history-router';
 import { browserHistory } from './components/services/browser-history';
 import { ToastContainer } from 'react-toastify';
+import { fetchEmployeeAction } from './store/api-actions';
+
+
+store.dispatch(fetchEmployeeAction());
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

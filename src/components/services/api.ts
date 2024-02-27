@@ -1,4 +1,5 @@
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { getToken } from './token';
 import { StatusCodes } from 'http-status-codes';
 import {toast} from 'react-toastify';
@@ -10,7 +11,7 @@ type TDetailMessage = {
   message: string;
 }
 
-const BASE_URL = 'https://frontend-test-api.stk8s.66bit.ru/api/Employee';
+const BASE_URL = 'https://frontend-test-api.stk8s.66bit.ru';
 const REQUEST_TIMEOUT = 5000;
 
 const StatusCodeMapping: Record<number, boolean> = {
