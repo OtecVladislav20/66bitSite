@@ -1,8 +1,22 @@
-// import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { MainPage } from '../pages/main-page';
+import { InfoPage } from '../pages/info-page';
+import { AppRoute } from '../const';
 
-export function App(): JSX.Element {
+
+export function App() {
   return (
-    <MainPage />
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path={AppRoute.Main}
+          element={<MainPage/>}
+        />
+        <Route
+          path={AppRoute.Info}
+          element={<InfoPage/>}
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }

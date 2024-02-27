@@ -309,6 +309,7 @@ input:checked {
 }
 
 .chosen-filter {
+    flex-wrap: wrap;
     align-items: center;
     padding: 0px 180px 0px 180px;
     background-color: var(--bg-chosen-filter);
@@ -360,4 +361,75 @@ input:checked {
 
 .info-personal__item:hover {
     background-color: #F2F2F2;
+}
+
+.data-person {
+    padding: 0px 168px 32px 168px;
+}
+
+.data-person-container {
+    align-items: center;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #F2F2F2;
+}
+
+.data-person__icon {
+    width: 163px;
+    height: 163px;
+    margin-right: 42px;
+}
+
+.data-person-fio {
+    margin: 0px;
+    margin-bottom: 16px;
+    font-size: 40px;
+}
+
+.data-person-prof {
+    margin: 0px;
+    margin-bottom: 24px;
+    font-size: 24px;
+}
+
+.data-person__text {
+    flex-direction: column;
+}
+
+.skill {
+    padding: 10px 18px;
+    background-color: #F2F2F2;
+    color: #292929;
+    margin-right: 16px;
+}
+
+.contact-data {
+    padding: 0px 168px 32px 168px;
+}
+
+.contact-data__title {
+    margin: 0px;
+    margin-bottom: 32px;
+    font-size: 32px;
+}
+
+.data-title {
+    margin: 0px;
+    margin-bottom: 24px;
+    font-size: 24px;
+}
+
+.data-p {
+    font-size: 24px;
+}
+
+.contact-data-tel {
+    margin-right: 44px;
+}
+
+.contact-data-birth {
+    margin-right: 106px;
+}
+
+.contact-data-date {
+    margin-right: 93px;
 }

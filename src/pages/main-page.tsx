@@ -1,3 +1,5 @@
+import { PersonalList } from '../components/personal-list';
+import { Toggle } from '../components/toggle';
 import '../style.css';
 
 
@@ -17,13 +19,7 @@ export function MainPage() {
               <p className="header-nav__email">info@66bit.ru</p>
             </li>
           </ul>
-          <label className="toggle__button">
-            <input id="toggle__input" type="checkbox" className="toggle__input" />
-            <span className="toggle__slider">
-              <img src="../img/moon.svg" alt="" className="toggle__icon moon" />
-              <img src="../img/sun.svg" alt="" className="toggle__icon sun" />
-            </span>
-          </label>
+          <Toggle />
         </div>
       </header>
       <main>
@@ -77,32 +73,7 @@ export function MainPage() {
           </ul>
         </section>
         <section className="info-personal">
-          <ul className="list-reset">
-            <li className="info-personal__item flex info-personal__item--active">
-              <p>Дмитриев Игорь Степанович</p>
-              <p>Дизайнер</p>
-              <p>+7 934 349-43-23</p>
-              <p>23.09.2000</p>
-            </li>
-            <li className="info-personal__item flex">
-              <p>Дмитриев Игорь Степанович</p>
-              <p>Дизайнер</p>
-              <p>+7 934 349-43-23</p>
-              <p>23.09.2000</p>
-            </li>
-            <li className="info-personal__item flex">
-              <p>Дмитриев Игорь Степанович</p>
-              <p>Дизайнер</p>
-              <p>+7 934 349-43-23</p>
-              <p>23.09.2000</p>
-            </li>
-            <li className="info-personal__item flex">
-              <p>Дмитриев Игорь Степанович</p>
-              <p>Дизайнер</p>
-              <p>+7 934 349-43-23</p>
-              <p>23.09.2000</p>
-            </li>
-          </ul>
+          <PersonalList />
         </section>
       </main>
     </>
