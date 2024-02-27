@@ -1,3 +1,6 @@
+import '../style.css';
+
+
 export function MainPage() {
   return (
     <>
