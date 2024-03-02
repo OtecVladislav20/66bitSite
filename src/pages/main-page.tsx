@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import { PersonalList } from '../components/personal-list/personal-list';
 import { Toggle } from '../components/toggle/toggle';
 import '../style.css';
@@ -10,18 +12,19 @@ import axios from 'axios';
 export function MainPage() {
   // const employee = useAppSelector((state) => state[NameSpace.Data].employee);
 
-  const [em, setEm] = useState([]);
+  const [employee, setEmployee] = useState([]);
   const [curPage, setCurPuge] = useState(1);
   const [fetching, setFetching] = useState(true);
   const [totalCount, setTotalCount] = useState(0);
 
   useEffect(() => {
     if (fetching) {
+      console.log('fetching');
       axios.get(`https://frontend-test-api.stk8s.66bit.ru/api/Employee?Page=${curPage}`)
         .then((response) => {
-          setEm([...em, ...response.data])
-          setCurPuge(prevState => prevState + 1)
-          setTotalCount(response.headers['x-total-count']);
+          setEmployee([...employee, ...response.data]);
+          setCurPuge(prevState => prevState + 1);
+          setTotalCount(response.headers['x-token']);
         })
         .finally(() => setFetching(false));
     }
@@ -35,7 +38,7 @@ export function MainPage() {
   }, []);
 
   const scrollHandler = (e: { target: { documentElement: { scrollHeight: number; scrollTop: number}}}) => {
-    if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100 && em.length < totalCount) {
+    if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100) { //&& employee.length < totalCount
       setFetching(true);
     }
   };
@@ -103,7 +106,7 @@ export function MainPage() {
           </ul>
         </section>
         <section className="info-personal">
-          <PersonalList employee={em}/>
+          <PersonalList employee={employee}/>
         </section>
       </main>
     </>
