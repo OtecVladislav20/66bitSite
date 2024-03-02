@@ -7,4 +7,6 @@ export type AppDispatch = typeof store.dispatch;
 
 export type TLoadDataProcess = {
   employee: TEmployee[];
+  employeeID: TEmployee;
+  theme: boolean;
 }

@@ -15,3 +15,15 @@ export const fetchEmployeeAction = createAsyncThunk<TEmployee[], undefined, {
     return data;
   },
 );
+
+export const fetchEmployeeIDAction = createAsyncThunk<TEmployee, string, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'fetchEmployeeID',
+  async (id, {extra: api}) => {
+    const {data} = await api.get<TEmployee>(`/api/Employee/${id}`);
+    return data;
+  },
+);

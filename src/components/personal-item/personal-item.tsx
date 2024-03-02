@@ -1,12 +1,21 @@
 import { Link } from 'react-router-dom';
 
-export function PersonalItem(): JSX.Element {
+
+type TPersonalItem = {
+  id: number;
+  fio: string;
+  prof: string;
+  phone: string;
+  birth: string;
+}
+
+export function PersonalItem({id, fio, prof, phone, birth}:TPersonalItem): JSX.Element {
   return (
-    <Link to="/info" className="info-personal__item flex">
-      <p>Дмитриев Игорь Степанович</p>
-      <p>Дизайнер</p>
-      <p>+7 934 349-43-23</p>
-      <p>23.09.2000</p>
+    <Link to={`/api/Employee/${id}`} className="info-personal__item flex">
+      <p>{fio}</p>
+      <p>{prof}</p>
+      <p>{phone}</p>
+      <p>{birth}</p>
     </Link>
   );
 }

@@ -1,9 +1,4 @@
-// import { useState } from 'react';
-
-
 export function Toggle(): JSX.Element {
-  // [theme, setTheme] = useState('light');
-
   const root = document.querySelector(':root');
   const handleChangeTheme = () => {
     root?.classList.toggle('dark');

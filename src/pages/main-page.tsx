@@ -1,15 +1,51 @@
 import { PersonalList } from '../components/personal-list/personal-list';
 import { Toggle } from '../components/toggle/toggle';
 import '../style.css';
+import { AppRoute } from '../const';
+import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 
 export function MainPage() {
+  // const employee = useAppSelector((state) => state[NameSpace.Data].employee);
+
+  const [em, setEm] = useState([]);
+  const [curPage, setCurPuge] = useState(1);
+  const [fetching, setFetching] = useState(true);
+  const [totalCount, setTotalCount] = useState(0);
+
+  useEffect(() => {
+    if (fetching) {
+      axios.get(`https://frontend-test-api.stk8s.66bit.ru/api/Employee?Page=${curPage}`)
+        .then((response) => {
+          setEm([...em, ...response.data])
+          setCurPuge(prevState => prevState + 1)
+          setTotalCount(response.headers['x-total-count']);
+        })
+        .finally(() => setFetching(false));
+    }
+  }, [fetching]);
+
+  useEffect(() => {
+    document.addEventListener('scroll', scrollHandler);
+    return function () {
+      document.removeEventListener('scroll', scrollHandler);
+    };
+  }, []);
+
+  const scrollHandler = (e: { target: { documentElement: { scrollHeight: number; scrollTop: number}}}) => {
+    if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100 && em.length < totalCount) {
+      setFetching(true);
+    }
+  };
+
   return (
     <>
       <header className="flex">
-        <a href="#" className="header-logo">
+        <Link to={AppRoute.Main} className="header-logo">
           <img src="../img/Логотип 66бит 1.svg" alt="66bit" className="icon-logo" />
-        </a>
+        </Link>
         <div className="header-info flex">
           <ul className="header__list list-reset flex">
             <li className="header__item">
@@ -26,19 +62,13 @@ export function MainPage() {
         <section className="hierarchy flex">
           <ul className="hierarchy__list list-reset flex">
             <li className="hierarchy__item">
-              <a href="#">Главная</a>
+              <Link to={AppRoute.Main}>Главная</Link>
             </li>
             <li className="hierarchy__item">
               <img src="../img/Arrow.svg" alt="Arrow" />
             </li>
             <li className="hierarchy__item">
-              <a href="#">Список сотрудников</a>
-            </li>
-            <li className="hierarchy__item">
-              <img src="../img/Arrow.svg" alt="Arrow" />
-            </li>
-            <li className="hierarchy__item">
-              <a href="#">Дмитриев Игорь Степанович</a>
+              <Link to={AppRoute.Main}>Список сотрудников</Link>
             </li>
           </ul>
         </section>
@@ -73,7 +103,7 @@ export function MainPage() {
           </ul>
         </section>
         <section className="info-personal">
-          <PersonalList />
+          <PersonalList employee={em}/>
         </section>
       </main>
     </>

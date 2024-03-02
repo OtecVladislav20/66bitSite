@@ -1,6 +1,23 @@
+import { Link, useParams } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../components/hooks';
 import { Toggle } from '../components/toggle/toggle';
+import { AppRoute, NameSpace } from '../const';
+import { fetchEmployeeIDAction } from '../store/api-actions';
+import { useEffect } from 'react';
+
 
 export function InfoPage() {
+  const { id } = useParams();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (id) {
+      dispatch(fetchEmployeeIDAction(id));
+    }
+  }, [dispatch, id]);
+
+  const employeeID = useAppSelector((state) => state[NameSpace.Data].employeeID);
+
   return (
     <>
       <meta charSet="UTF-8" />
@@ -9,9 +26,9 @@ export function InfoPage() {
       <link rel="stylesheet" href="../css/normalize.css" />
       <link rel="stylesheet" href="../css/style.css" />
       <header className="flex">
-        <a href="#" className="header-logo">
+        <Link to={AppRoute.Main} className="header-logo">
           <img src="../img/Логотип 66бит 1.svg" alt="66bit" className="icon-logo" />
-        </a>
+        </Link>
         <div className="header-info flex">
           <ul className="header__list list-reset flex">
             <li className="header__item">
@@ -28,31 +45,30 @@ export function InfoPage() {
         <section className="hierarchy flex">
           <ul className="hierarchy__list list-reset flex">
             <li className="hierarchy__item">
-              <a href="#">Главная</a>
+              <Link to={AppRoute.Main}>Главная</Link>
             </li>
             <li className="hierarchy__item">
               <img src="../img/Arrow.svg" alt="Arrow" />
             </li>
             <li className="hierarchy__item">
-              <a href="#">Список сотрудников</a>
+              <Link to={AppRoute.Main}>Список сотрудников</Link>
             </li>
             <li className="hierarchy__item">
               <img src="../img/Arrow.svg" alt="Arrow" />
             </li>
             <li className="hierarchy__item">
-              <a href="#">Дмитриев Игорь Степанович</a>
+              <p>{employeeID.name}</p>
             </li>
           </ul>
         </section>
         <section className="data-person">
           <div className="data-person-container flex">
-            <img src="../img/png/Man.png" alt="man" className="data-person__icon" />
+            <img src={employeeID.photo} alt="man" className="data-person__icon" />
             <div className="data-person__text flex">
-              <h2 className="data-person-fio">Дмитриев Игорь Степанович</h2>
-              <p className="data-person-prof">Дизайнер</p>
+              <h2 className="data-person-fio">{employeeID.name}</h2>
+              <p className="data-person-prof">{employeeID.position}</p>
               <div className="data-person-skills flex">
-                <div className="skill">Figma</div>
-                <div className="skill">Adobe Illustrator</div>
+                <div className="skill">{employeeID.stack}</div>
               </div>
             </div>
           </div>
@@ -61,15 +77,15 @@ export function InfoPage() {
           <h3 className="contact-data__title">Основная информация</h3>
           <div className="flex">
             <h4 className="contact-data-tel data-title">Контактный телефон:</h4>
-            <p className="data-p">+7 934 349-43-23</p>
+            <p className="data-p">{employeeID.phone}</p>
           </div>
           <div className="flex">
             <h4 className="contact-data-birth data-title">Дата рождения:</h4>
-            <p className="data-p">23.09.2000</p>
+            <p className="data-p">{employeeID.birthdate}</p>
           </div>
           <div className="flex">
             <h4 className="contact-data-date data-title">Дата устройства:</h4>
-            <p className="data-p">18.01.2019</p>
+            <p className="data-p">{employeeID.dateOfEmployment}</p>
           </div>
         </section>
       </main>

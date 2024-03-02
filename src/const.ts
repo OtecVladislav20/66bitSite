@@ -1,6 +1,6 @@
 export enum AppRoute {
-  Main = '/',
-  Info = '/info',
+  Main = '/api/Employee',
+  Info = '/api/Employee/:id',
 }
 
 export enum NameSpace {
