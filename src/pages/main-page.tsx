@@ -19,22 +19,33 @@ export function MainPage() {
   const [fetching, setFetching] = useState(true);
   // const [totalCount, setTotalCount] = useState(0);
 
+  // useEffect(() => {
+  //   const search = searchValue ? `&Name=${searchValue}` : '';
+  //   if (search) {
+  //     setCurPage(1);
+  //   }
+  //   if (fetching) {
+  //     console.log('fetching');
+  //     axios.get(`https://frontend-test-api.stk8s.66bit.ru/api/Employee?Page=${curPage}${search}`)
+  //       .then((response) => {
+  //         setEmployee([...employee, ...response.data]);
+  //         setCurPage(prevState => prevState + 1);
+  //         // setTotalCount(response.headers['x-token']);
+  //       })
+  //       .finally(() => setFetching(false));
+  //   }
+  // }, [fetching, searchValue, curPage]);
   useEffect(() => {
     const search = searchValue ? `&Name=${searchValue}` : '';
-    if (search) {
-      setCurPage(1);
-    }
-    if (fetching) {
-      console.log('fetching');
-      axios.get(`https://frontend-test-api.stk8s.66bit.ru/api/Employee?Page=${curPage}${search}`)
-        .then((response) => {
-          setEmployee([...employee, ...response.data]);
-          setCurPage(prevState => prevState + 1);
-          // setTotalCount(response.headers['x-token']);
-        })
-        .finally(() => setFetching(false));
-    }
-  }, [fetching, searchValue, curPage]);
+    console.log('fetching');
+    axios.get(`https://frontend-test-api.stk8s.66bit.ru/api/Employee?${search}`)
+      .then((response) => {
+        setEmployee([...response.data]);
+        // setTotalCount(response.headers['x-token']);
+      })
+      .finally(() => setFetching(false));
+  }, [searchValue]);
+
 
   useEffect(() => {
     document.addEventListener('scroll', scrollHandler);
