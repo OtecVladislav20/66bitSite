@@ -11,23 +11,30 @@ import { SearchInput } from '../components/search-input/search-input';
 
 
 export function MainPage() {
+  const [searchValue, setSearchValue] = useState('');
+
+
   const [employee, setEmployee] = useState([]);
-  const [curPage, setCurPuge] = useState(1);
+  const [curPage, setCurPage] = useState(1);
   const [fetching, setFetching] = useState(true);
   // const [totalCount, setTotalCount] = useState(0);
 
   useEffect(() => {
+    const search = searchValue ? `&Name=${searchValue}` : '';
+    if (search) {
+      setCurPage(1);
+    }
     if (fetching) {
       console.log('fetching');
-      axios.get(`https://frontend-test-api.stk8s.66bit.ru/api/Employee?Page=${curPage}`)
+      axios.get(`https://frontend-test-api.stk8s.66bit.ru/api/Employee?Page=${curPage}${search}`)
         .then((response) => {
           setEmployee([...employee, ...response.data]);
-          setCurPuge(prevState => prevState + 1);
+          setCurPage(prevState => prevState + 1);
           // setTotalCount(response.headers['x-token']);
         })
         .finally(() => setFetching(false));
     }
-  }, [fetching]);
+  }, [fetching, searchValue, curPage]);
 
   useEffect(() => {
     document.addEventListener('scroll', scrollHandler);
@@ -76,7 +83,7 @@ export function MainPage() {
         </section>
         <section className="search">
           <h2>Список сотрудников</h2>
-          <SearchInput />
+          <SearchInput searchValue={searchValue} setSearchValue={setSearchValue}/>
         </section>
         <section className="chosen-filter flex">
           <h3 className="chosen-filter__title">Выбранные фильтры:</h3>

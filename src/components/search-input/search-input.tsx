@@ -1,5 +1,10 @@
-export function SearchInput() {
+export function SearchInput({searchValue, setSearchValue}) {
   return (
-    <input className="search__input" type="text" placeholder="Поиск" />
+    <input
+      value={searchValue}
+      className="search__input"
+      type="text" placeholder="Поиск"
+      onChange={(e) => setSearchValue(e.target.value)}
+    />
   );
 }
