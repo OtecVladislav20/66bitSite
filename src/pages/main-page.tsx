@@ -7,15 +7,14 @@ import { AppRoute } from '../const';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { SearchInput } from '../components/search-input/search-input';
 
 
 export function MainPage() {
-  // const employee = useAppSelector((state) => state[NameSpace.Data].employee);
-
   const [employee, setEmployee] = useState([]);
   const [curPage, setCurPuge] = useState(1);
   const [fetching, setFetching] = useState(true);
-  const [totalCount, setTotalCount] = useState(0);
+  // const [totalCount, setTotalCount] = useState(0);
 
   useEffect(() => {
     if (fetching) {
@@ -24,7 +23,7 @@ export function MainPage() {
         .then((response) => {
           setEmployee([...employee, ...response.data]);
           setCurPuge(prevState => prevState + 1);
-          setTotalCount(response.headers['x-token']);
+          // setTotalCount(response.headers['x-token']);
         })
         .finally(() => setFetching(false));
     }
@@ -77,7 +76,7 @@ export function MainPage() {
         </section>
         <section className="search">
           <h2>Список сотрудников</h2>
-          <input className="search__input" type="text" placeholder="Поиск" />
+          <SearchInput />
         </section>
         <section className="chosen-filter flex">
           <h3 className="chosen-filter__title">Выбранные фильтры:</h3>
