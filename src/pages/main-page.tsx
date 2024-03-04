@@ -13,6 +13,7 @@ export function MainPage() {
   const [employee, setEmployee] = useState([]);
 
   const [searchValue, setSearchValue] = useState('');
+  const [gender, setGender] = useState('');
 
   // const [curPage, setCurPage] = useState(1);
   // const [fetching, setFetching] = useState(true);
@@ -50,11 +51,12 @@ export function MainPage() {
 
   useEffect(() => {
     const search = searchValue ? `&Name=${searchValue}` : '';
-    axios.get(`https://frontend-test-api.stk8s.66bit.ru/api/Employee?${search}`)
+    const genderV = gender ? `&Gender=${gender}` : '';
+    axios.get(`https://frontend-test-api.stk8s.66bit.ru/api/Employee?${search}${genderV}`)
       .then((response) => {
         setEmployee([...response.data]);
       });
-  }, [searchValue]);
+  }, [searchValue, gender]);
 
   return (
     <>
@@ -90,7 +92,7 @@ export function MainPage() {
         </section>
         <section className="search">
           <h2>Список сотрудников</h2>
-          <SortBlock />
+          <SortBlock set={setGender}/>
           <SearchInput searchValue={searchValue} setSearchValue={setSearchValue}/>
         </section>
         <section className="chosen-filter flex">

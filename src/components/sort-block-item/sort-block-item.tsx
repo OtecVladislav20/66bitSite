@@ -4,14 +4,16 @@ import { useState } from 'react';
 type TSortArray = {
   sortTitle: string;
   sortArray: string[];
+  set: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export function SortBlockItem({sortTitle, sortArray}: TSortArray) {
+export function SortBlockItem({sortTitle, sortArray, set}: TSortArray) {
   const [openSort, setOpenSort] = useState(false);
   const [selected, setSelected] = useState(-1);
 
-  const handleClickOnSort = (i: number) => {
+  const handleClickOnSort = (i: number, name: string) => {
     setSelected(i);
+    set(name);
     setOpenSort(false);
     if (selected === i) {
       setSelected(-1);
@@ -30,7 +32,7 @@ export function SortBlockItem({sortTitle, sortArray}: TSortArray) {
             <li
               key={name}
               className="sortBlock-item flex"
-              onClick={() => handleClickOnSort(i)}
+              onClick={() => handleClickOnSort(i, name)}
             >
               <p className="sortBlock-item-title">{name}</p>
               <input type="checkbox" className="sortBlock-checkbox" checked={selected === i}/>
