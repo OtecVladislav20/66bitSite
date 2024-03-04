@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable @typescript-eslint/no-use-before-define */
 import { PersonalList } from '../components/personal-list/personal-list';
 import { Toggle } from '../components/toggle/toggle';
 import '../style.css';
@@ -98,6 +96,7 @@ export function MainPage() {
         <section className="chosen-filter flex">
           <h3 className="chosen-filter__title">Выбранные фильтры:</h3>
           <ul className="list-reset flex">
+
             <li className="chosen-filter__item flex">
               <button className="chosen-filter__item__button button-reset">
                 <img src="../img/X.svg" alt="x" />
@@ -110,6 +109,7 @@ export function MainPage() {
               </button>
               <p>fullstack</p>
             </li>
+
           </ul>
           <button className="chosen-filter__button button-reset">Найти</button>
         </section>

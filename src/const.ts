@@ -6,3 +6,9 @@ export enum AppRoute {
 export enum NameSpace {
   Data = 'DATA',
 }
+
+export const dataSortBlock = {
+  'Position': ['Frontend', 'Backend', 'Analyst', 'Manager', 'Designer'],
+  'Gender': ['Male', 'Female'],
+  'Stack': ['CSharp', 'React', 'Java', 'PHP', 'Figma', 'Word'],
+};

@@ -481,4 +481,5 @@ input:checked {
 
 .sortBlock-checkbox {
     background-color: #155DA4;
+    margin-left: auto;
 }
