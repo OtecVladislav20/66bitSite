@@ -300,6 +300,7 @@ input:checked {
 
 .search {
     padding: 0px 180px 28px 180px;
+    position: relative;
 }
 
 .search__input {
@@ -432,4 +433,51 @@ input:checked {
 
 .contact-data-date {
     margin-right: 93px;
+}
+
+.sortBlock-title {
+    margin: 0px;
+    margin-right: 12px;
+    font-size: 20px;
+    color: #292929;
+}
+
+.sortBlock-wrapper {
+    position: absolute;
+    right: 180px;
+    top: 0px;
+}
+
+.sortBlock {
+    position: relative;
+}
+.sortBlock:not(:last-child) {
+    margin-right: 32px;
+}
+
+.sortBlock-list {
+    position: absolute;
+    top: 30px;
+    right: 0px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 5px 10px #00000040;
+    border-top: 1px solid #155DA4;
+}
+
+.sortBlock-item {
+    width: 100%;
+}
+
+.sortBlock-item:not(:last-child) {
+    margin-bottom: 16px;
+}
+
+.sortBlock-item-title {
+    margin: 0px;
+    margin-right: 38px;
+}
+
+.sortBlock-checkbox {
+    background-color: #155DA4;
 }

@@ -8,57 +8,55 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { SearchInput } from '../components/search-input/search-input';
+import { SortBlock } from '../components/sort-block/sort-block';
 
 
 export function MainPage() {
+  const [employee, setEmployee] = useState([]);
+
   const [searchValue, setSearchValue] = useState('');
 
-
-  const [employee, setEmployee] = useState([]);
-  const [curPage, setCurPage] = useState(1);
-  const [fetching, setFetching] = useState(true);
-  // const [totalCount, setTotalCount] = useState(0);
+  // const [curPage, setCurPage] = useState(1);
+  // const [fetching, setFetching] = useState(true);
 
   // useEffect(() => {
   //   const search = searchValue ? `&Name=${searchValue}` : '';
   //   if (search) {
   //     setCurPage(1);
+  //     setEmployee([]);
   //   }
+
   //   if (fetching) {
   //     console.log('fetching');
   //     axios.get(`https://frontend-test-api.stk8s.66bit.ru/api/Employee?Page=${curPage}${search}`)
   //       .then((response) => {
   //         setEmployee([...employee, ...response.data]);
   //         setCurPage(prevState => prevState + 1);
-  //         // setTotalCount(response.headers['x-token']);
   //       })
   //       .finally(() => setFetching(false));
   //   }
-  // }, [fetching, searchValue, curPage]);
+  // }, [fetching, searchValue]);
+
+  // useEffect(() => {
+  //   document.addEventListener('scroll', scrollHandler);
+  //   return function () {
+  //     document.removeEventListener('scroll', scrollHandler);
+  //   };
+  // }, []);
+
+  // const scrollHandler = (e: { target: { documentElement: { scrollHeight: number; scrollTop: number}}}) => {
+  //   if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100) {
+  //     setFetching(true);
+  //   }
+  // };
+
   useEffect(() => {
     const search = searchValue ? `&Name=${searchValue}` : '';
-    console.log('fetching');
     axios.get(`https://frontend-test-api.stk8s.66bit.ru/api/Employee?${search}`)
       .then((response) => {
         setEmployee([...response.data]);
-        // setTotalCount(response.headers['x-token']);
-      })
-      .finally(() => setFetching(false));
+      });
   }, [searchValue]);
-
-
-  useEffect(() => {
-    document.addEventListener('scroll', scrollHandler);
-    return function () {
-      document.removeEventListener('scroll', scrollHandler);
-    };
-  }, []);
-
-  const scrollHandler = (e: { target: { documentElement: { scrollHeight: number; scrollTop: number}}}) => {
-    if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100) { //&& employee.length < totalCount
-      setFetching(true);
-    }
-  };
 
   return (
     <>
@@ -94,6 +92,7 @@ export function MainPage() {
         </section>
         <section className="search">
           <h2>Список сотрудников</h2>
+          <SortBlock />
           <SearchInput searchValue={searchValue} setSearchValue={setSearchValue}/>
         </section>
         <section className="chosen-filter flex">
