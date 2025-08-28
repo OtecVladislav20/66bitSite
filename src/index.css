@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+html {
+    box-sizing: border-box;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    background-color: var(--background-color);
+    transition: background-color 200ms linear;
+}
+
+.flex { 
+    display: flex;
+}
+
+.default-text {
+    color: var(--text-color);
+    font-size: 18px;
+    font-family: "Raleway", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+}
+
+.header__wrapper {
+    justify-content: center;
+    padding-left: 180px;
+    padding-right: 180px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    box-shadow: var(--box-shadow);
+}
+
+.header {
+    width: 1440px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__text__wrapper {
+    margin-right: 48px;
+}
+
+.header__text:not(:last-child) {
+   margin-right: 48px;
+}
+
+
+.toggle {
+    display: inline-block;
+    position: relative;
+    width: 55px;
+    height: 26px;
+}
+.toggle input{
+    opacity: 1;
+    width: 0;
+    height: 0;
+}
+.toggle__flag {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #155DA4;
+    border-radius: 30px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.toggle__flag::before {
+    position: absolute;
+    content: '';
+    background-color: aliceblue;
+    background-image: url('./assets/img/toggle-light.svg');
+    background-repeat: no-repeat;
+    border-radius: 30px;
+    width: 20px;
+    height: 20px;
+    left: 4px;
+    top: 3px;
+    transition: 200ms;
+}
+.toggle__checkbox:checked + .toggle__flag::before {
+    background-image: url('./assets/img/toggle-dark.svg');
+    transform: translateX(28px);
+}
+
+
+.search-wrapper {
+    padding-left: 180px;
+    padding-right: 180px;
+    margin-bottom: 28px;
+    justify-content: center;
+}
+.search__block {
+    width: 1440px;
+    display: grid;
+    grid-template-areas:
+    "search__title search__selectors"
+    "search__input search__input";
+    gap: 28px;
+}
+.search__title {
+    grid-area: search__title;
+    margin: 0;
+    font-weight: 700;
+    font-size: 40px;
+}
+.search__selectors {
+    grid-area: search__selectors;
+    align-items: center;
+    justify-content: end;
+}
+.search__input {
+    grid-area: search__input;
+    height: 23px;
+    padding: 10px;
+    border-radius: 5px;
+    border: solid 0.5px #B0B0B0;
+    background-color: transparent;
+}
+.search__input::placeholder {
+    margin: 0;
+    font-weight: 400;
+    font-size: 20px;
+    font-family: "Raleway", sans-serif;
+}
+.search__input[type='text'] {
+    margin: 0;
+    font-weight: 400;
+    font-size: 20px;
+    font-family: "Raleway", sans-serif;
+    color: var(--text-color);
+}
+.search__input:hover {
+    border: solid 0.5px #155DA4;
+}
+.search__input:focus {
+    border: none;
+    outline: 0.5px solid #155DA4;
+}
+
+
+.filter-wrapper {
+    padding-left: 180px;
+    padding-right: 180px;
+    background-color: var(--filter-wrapper-color);
+    justify-content: center;
+}
+
+.filter__block {
+    width: 1440px;
+    height: 70px;
+    align-items: center;
+    justify-content: space-between;
+}
+.filter__block div{
+    align-items: center;
+}
+
+.filter__title {
+    margin-right: 40px;
+}
+
+.filter__btn {
+    background-color: #155DA4;
+    color: #FFFFFF;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: "Raleway", sans-serif;
+    border-radius: 8px;
+    padding: 12px 48px;
+}
+
+.filter__content {
+    position: relative;
+    cursor: pointer;
+    padding: 10px;
+    padding-left: 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--background-color);
+}
+.filter__content-text {
+    font-weight: 400;
+    font-size: 16px;
+}
+
+
+.custom-cross::before,
+.custom-cross::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  width: 12px;
+  height: 1px;
+  background-color: var(--text-color);
+  border-radius: 1px;
+}
+
+.custom-cross::before {
+  transform: rotate(45deg);
+}
+
+.custom-cross::after {
+  transform: rotate(-45deg);
+}
+
+/* Модификаторы */
+.custom-cross.small {
+  --cross-size: 12px;
+  --cross-thickness: 1.5px;
+}
+
+.custom-cross.large {
+  --cross-size: 24px;
+  --cross-thickness: 3px;
+}
+
+.custom-cross.red {
+  --cross-color: #ff4444;
+}
+
+.custom-cross.blue {
+  --cross-color: #155DA4;
+}

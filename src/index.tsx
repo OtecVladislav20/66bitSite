@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { App } from './components/app/app';
+import App from './app';
 import { Provider } from 'react-redux';
-import { store } from './store';
-import HistoryRouter from './components/history-router/history-router';
-import { browserHistory } from './components/services/browser-history';
-import { ToastContainer } from 'react-toastify';
+import { store } from './store/store';
+import './theme.css';
+import './index.css';
 
 
 const root = ReactDOM.createRoot(
@@ -15,10 +14,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <HistoryRouter history={browserHistory}>
-        <ToastContainer/>
-        <App />
-      </HistoryRouter>
+      <App/>
     </Provider>
   </React.StrictMode>
 );

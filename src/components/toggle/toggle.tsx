@@ -1,16 +1,32 @@
-export function Toggle(): JSX.Element {
-  const root = document.querySelector(':root');
-  const handleChangeTheme = () => {
-    root?.classList.toggle('dark');
-  };
+import { useEffect, useState } from 'react';
+import { useTheme } from '../../hooks/useTheme';
+
+export default function Toggle(): JSX.Element {
+  const { theme, setTheme } = useTheme();
+
+  const [checked, setChecked] = useState(true);
+  function chengeCheckbox() {
+    setChecked(!checked);
+    if (theme == 'dark') {
+      setTheme('light');
+    } else {
+      setTheme('dark');
+    }
+  }
+
+  let t = localStorage.getItem('app-theme');
+  useEffect(() => {
+    if (t == 'dark'){
+      setChecked(false);
+    } else {
+      setChecked(true);
+    }
+  }, []);
 
   return (
-    <label className="toggle__button">
-      <input id="toggle__input" type="checkbox" className="toggle__input" onClick={handleChangeTheme}/>
-      <span className="toggle__slider">
-        <img src="../img/moon.svg" alt="" className="toggle__icon moon" />
-        <img src="../img/sun.svg" alt="" className="toggle__icon sun" />
-      </span>
+    <label className="toggle">
+      <input type="checkbox" className="toggle__checkbox" checked={checked} onChange={chengeCheckbox}/>
+      <span className="toggle__flag"></span>
     </label>
   );
 }

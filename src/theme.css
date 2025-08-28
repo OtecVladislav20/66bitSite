@@ -1,0 +1,26 @@
+html[data-theme='dark'] {
+    --text-color: #F5F5F5;
+    --background-color: #292929;
+    --filter-wrapper-color: #3E3E3E;
+
+    --shadow-color: 0, 0, 0;
+    --shadow-opacity: 0.1;
+    --shadow-blur: 4px;
+    --shadow-offset-y: 4px;
+    --shadow-offset-x: 0;
+    --box-shadow: var(--shadow-offset-x) var(--shadow-offset-y) var(--shadow-blur) rgba(var(--shadow-color), var(--shadow-opacity));
+}
+
+html[data-theme='light'] {
+    --text-color: #292929;
+    --background-color: #FFFFFF;
+    --filter-wrapper-color: #F2F2F2;
+
+    --shadow-color: 57, 113, 164;
+    --shadow-opacity: 0.25;
+    --shadow-blur: 8px;
+    --shadow-offset-y: 4px;
+    --shadow-offset-x: 0;
+    --box-shadow: var(--shadow-offset-x) var(--shadow-offset-y) var(--shadow-blur) rgba(var(--shadow-color), var(--shadow-opacity));
+}
+
