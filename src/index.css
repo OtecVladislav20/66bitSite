@@ -13,10 +13,10 @@ a {
 body {
     margin: 0;
     background-color: var(--background-color);
-    transition: background-color 200ms linear;
+    transition: background-color 0.5s linear;
 }
 
-.flex { 
+.flex {
     display: flex;
 }
 
@@ -184,6 +184,7 @@ body {
 .filter__content {
     position: relative;
     cursor: pointer;
+    margin-right: 24px;
     padding: 10px;
     padding-left: 30px;
     border: none;
@@ -263,6 +264,7 @@ td {
 
 .staff__item {
     cursor: pointer;
+    border-bottom: solid 1px var(--filter-wrapper-color);
 }
 .staff__item:hover {
     background-color: var(--filter-wrapper-color);
