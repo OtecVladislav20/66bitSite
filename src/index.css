@@ -234,3 +234,36 @@ body {
 .custom-cross.blue {
   --cross-color: #155DA4;
 }
+
+.staff__list-wrapper {
+    padding-left: 180px;
+    padding-right: 180px;
+    justify-content: center;
+}
+.staff__list {
+    width: 1440px;
+}
+
+.staff__table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 32px 12px;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: "Raleway", sans-serif;
+    color: var(--text-color);
+}
+
+.td__title {
+    color: #B0B0B0;
+}
+
+.staff__item {
+    cursor: pointer;
+}
+.staff__item:hover {
+    background-color: var(--filter-wrapper-color);
+}
