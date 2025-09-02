@@ -1,28 +1,48 @@
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/header/header';
 import { Breadcrumbs } from '../components/breadcrumbs/breadcrumbs';
-import CustomDropdown from '../components/dropdown-menu/dropdown-nemu';
-import { positions } from '../utils/const';
-import { useState } from 'react';
+import DropdownMenu from '../components/dropdown-menu/dropdown-nemu';
+import { gender, positions, technology } from '../utils/const';
+import { useEffect, useState } from 'react';
 import ChoseFilterBlock from '../components/chose-filter-block/chose-filter-block';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { fetchEmployees } from '../store/actions';
 
 
 export default function StaffList(): JSX.Element {
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const [filters, setFilters] = useState<string[]>(localStorage.getItem('filters') || []);
+
+  useEffect(() => {
+    dispatch(fetchEmployees());
+  }, [dispatch]);
+
+  const employees = useAppSelector((state) => state.reducer.employees);
+
+  const [filters, setFilters] = useState<string[]>([]);
+
+  useEffect(() => {
+    const savedFilters = localStorage.getItem('filters');
+    if (savedFilters) {
+      const parsedFilters = JSON.parse(savedFilters) as string[];
+      if (Array.isArray(parsedFilters)) {
+        setFilters(parsedFilters);
+      }
+    }
+  }, []);
 
   const handleSetFilters = (filterToAdd: string) => {
     if (!filters.some((p) => p === filterToAdd)) {
       const newFilters = [...filters, filterToAdd];
       setFilters(newFilters);
-      localStorage.setItem('filters', newFilters);
+      localStorage.setItem('filters', JSON.stringify(newFilters));
     }
   };
 
   const handleFilterRemove = (filterToRemove: string) => {
-    setFilters((prev) =>
-      prev.filter((filter) => (filter !== filterToRemove))
-    );
+    const newFilters = filters.filter((filter) => (filter !== filterToRemove));
+    setFilters(newFilters);
+    localStorage.setItem('filters', JSON.stringify(newFilters));
   };
 
   return (
@@ -30,14 +50,25 @@ export default function StaffList(): JSX.Element {
       <Header/>
       <main>
         <Breadcrumbs/>
-
         <section className='search-wrapper flex'>
           <div className='search__block'>
             <h1 className='search__title default-text'>Список сотрудников</h1>
             <div className='search__selectors flex'>
-              <CustomDropdown
+              <DropdownMenu
                 options={positions}
                 placeholder="Должность"
+                selectedFilters={filters}
+                handleSetFilters={handleSetFilters}
+              />
+              <DropdownMenu
+                options={gender}
+                placeholder="Пол"
+                selectedFilters={filters}
+                handleSetFilters={handleSetFilters}
+              />
+              <DropdownMenu
+                options={technology}
+                placeholder="Стек технологий"
                 selectedFilters={filters}
                 handleSetFilters={handleSetFilters}
               />
@@ -58,18 +89,14 @@ export default function StaffList(): JSX.Element {
                 </tr>
               </thead>
               <tbody>
-                <tr className='staff__item' onClick={() => navigate('/staff-list/12312331')}>
-                  <td>Дмитриев Игорь Степанович</td>
-                  <td>Дизайнер</td>
-                  <td>+7 934 349-43-23</td>
-                  <td>23.09.2000</td>
-                </tr>
-                <tr className='staff__item' onClick={() => navigate('/staff-list/12312331')}>
-                  <td>Дмитриев Игорь Степанович</td>
-                  <td>Дизайнер</td>
-                  <td>+7 934 349-43-23</td>
-                  <td>23.09.2000</td>
-                </tr>
+                {employees.map((employee) => (
+                  <tr key={employee.id} className='staff__item' onClick={() => navigate(`/staff-list/${employee.id}`)}>
+                    <td>{employee.name}</td>
+                    <td>{employee.position}</td>
+                    <td>{employee.phone}</td>
+                    <td>{employee.birthdate}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>

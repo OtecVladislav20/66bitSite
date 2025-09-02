@@ -269,3 +269,67 @@ td {
 .staff__item:hover {
     background-color: var(--filter-wrapper-color);
 }
+
+
+.employee__wrapper {
+  padding-left: 180px;
+  padding-right: 180px;
+  justify-content: center;
+}
+.employee__block {
+  width: 1440px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--filter-wrapper-color);
+}
+.employee__text__wrapper {
+  flex-direction: column;
+  justify-content: space-between;
+}
+.employee__name {
+  font-size: 40px;
+  font-weight: 700;
+}
+.employee__position {
+  font-size: 24px;
+  font-weight: 500;
+}
+.employee__img {
+  width: 163px;
+  border-radius: 100px;
+  margin-right: 42px;
+}
+.stack__block {
+  padding: 10px 20px;
+  background-color: var(--filter-wrapper-color);
+  border-radius: 5px;
+  margin-right: 16px;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Raleway", sans-serif;
+  color: var(--text-color);
+}
+.stack__block:last-child {
+  margin-right: 0px;
+}
+
+
+.employee-info__wrapper {
+  padding-left: 180px;
+  padding-right: 180px;
+  justify-content: center;
+  padding-top: 40px;
+}
+.employee-info__block {
+  width: 1440px;
+}
+.employee-info__title {
+  font-weight: 600px;
+  font-size: 32px;
+  margin-bottom: 32px;
+}
+.employee-info__table {
+  width: 468px;
+}
+.employee-info__row {
+  padding: 12px 0px;
+}

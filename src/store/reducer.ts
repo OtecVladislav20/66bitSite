@@ -1,19 +1,29 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { TEmployee } from '../utils/types';
+import { fetchEmployee, fetchEmployees } from './actions';
+
 
 type TInitialState = {
-    x: string;
+  employees: TEmployee[];
+  employee: TEmployee;
 }
 
 const initialState: TInitialState = {
-    x: 'dsfsdf',
-}
+  employees: [],
+  employee: {} as TEmployee,
+};
 
 export const reducer = createSlice({
-  name: 'reducer', 
+  name: 'reducer',
   initialState,
   reducers: {},
   extraReducers(builder) {
     builder
-      // .addCase();
+      .addCase(fetchEmployees.fulfilled, (state, action) => {
+        state.employees = action.payload;
+      })
+      .addCase(fetchEmployee.fulfilled, (state, action) => {
+        state.employee = action.payload;
+      });
   }
 });

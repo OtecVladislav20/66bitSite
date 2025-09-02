@@ -3,5 +3,6 @@ export enum AppRoute {
   Staff = '/staff-list/:id',
 }
 
-export const positions = ['Backend-разработчик','Frontend-разработчик', 'Аналитик', 'Менеджер', 'Дизайнер'];
-
+export const positions = [ 'Frontend', 'Backend', 'Analyst', 'Manager', 'Designer' ];
+export const gender = [ 'Male', 'Female' ];
+export const technology = [ 'CSharp', 'React', 'Java', 'PHP', 'Figma', 'Word' ];

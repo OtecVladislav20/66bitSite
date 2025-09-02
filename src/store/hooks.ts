@@ -9,4 +9,3 @@ export type TAppDispatch = TAppStore['dispatch'];
 export const useAppDispatch: () => TAppDispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<TRootState> = useSelector;
 export const useAppStore: () => TAppStore = useStore;
-
